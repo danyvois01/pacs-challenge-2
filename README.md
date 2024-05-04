@@ -9,9 +9,7 @@ The C++ program implements a class which is designed to represent a dynamic spar
 
 - Dynamic construction using a `std::map<std::array<std::size_t,2>,T>`.
 - Capable of storing elements in row-wise or column-wise order.
-- Provides methods for compression, decompression, and checking compression status.
-- Handles out-of-bound element access gracefully.
-- Offers resizing capabilities.
+- Provides methods for compression, decompression, resizing, and checking compression status.
 - Includes friend operators for matrix-vector multiplication.
 
 ## Project Overview
