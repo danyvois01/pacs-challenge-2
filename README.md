@@ -17,14 +17,21 @@ The C++ program implements a class which is designed to represent a dynamic spar
 The project consists of the following files:
 
 1. **Matrix.hpp**:
-   - Defines the `Matrix` class for representing a sparse matrix.
+   - Defines the `Matrix` class for representing a dynamic matrix.
    - Includes method declarations for compression, element extraction, and more.
 
 2. **Matrix_impl.hpp**:
-   - Implements the methods of the `Matrix` class defined in `Matrix.hpp`.
+   - Implements the following methods of the `Matrix` class defined in `Matrix.hpp`:
+     - `resize`: Resizes the matrix to the specified number of rows and columns.
+     - `compress`: Compresses the matrix.
+     - `uncompress`: Uncompresses the matrix from either CSR or CSC format.
+     - `is_compressed`: Checks if the matrix is compressed.
+     - `print`: Prints the matrix.
 
 3. **Matrix_operators.hpp**:
-   - Defines operators for accessing matrix elements and vector multiplication.
+   - Defines the following operators for the `Matrix` class:
+     - `operator()`: Overloaded for accessing matrix elements.
+     - `operator*`: Overloaded for matrix-vector multiplication.
 
 4. **Matrix_reader.hpp**:
    - Contains the method for reading a matrix from a file in Matrix Market format.
