@@ -3,11 +3,12 @@
 ## A sparse matrix class
 
 This repository hosts the second assignment of the APSC course 2023-2024.
+
 The C++ program implements a class which is designed to represent a dynamic sparse matrix with flexible storage ordering. The class is implemented in the **algebra** namespace.
 
 ## Features
 
-- Dynamic construction using a `std::map<std::array<std::size_t,2>,T>`.
+- Dynamic construction.
 - Capable of storing elements in row-wise or column-wise order.
 - Provides methods for compression, decompression, resizing, and checking compression status.
 - Includes friend operators for matrix-vector multiplication.
@@ -17,7 +18,7 @@ The C++ program implements a class which is designed to represent a dynamic spar
 The project consists of the following files:
 
 1. **Matrix.hpp**:
-   - Defines the `Matrix` class for representing a dynamic matrix.
+   - Defines the `Matrix` class for representing a sparse matrix.
    - Includes method declarations for compression, element extraction, and more.
 
 2. **Matrix_impl.hpp**:
