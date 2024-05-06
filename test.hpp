@@ -16,9 +16,9 @@ void test() {
     mat(2, 3) = 6;
 
     mat.print();
-
     mat.compress();
-
+    mat.print();
+    mat.uncompress();
     mat.print();
 
     mat.read_MatrixMarket("lnsp_131.mtx");

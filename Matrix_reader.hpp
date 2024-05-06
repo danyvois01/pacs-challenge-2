@@ -46,6 +46,9 @@ namespace algebra {
 
         // Close the file
         file.close();
+
+        // Add a cout statement after closing the file
+        std::cout << "File opened successfully: " << filename << std::endl;
     }
 
 } // namespace algebra

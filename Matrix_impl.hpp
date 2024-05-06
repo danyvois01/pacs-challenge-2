@@ -24,6 +24,10 @@ namespace algebra {
     /// Compress the matrix
     template<typename T, StorageOrder Order>
     void Matrix<T, Order>::compress() {
+        // Check if the matrix is already compressed
+        if (is_compressed()) {
+            return;
+        }
         // Clear existing compressed storage
         val.clear();
         inner_idx.clear();
@@ -83,6 +87,10 @@ namespace algebra {
     /// Uncompress the matrix from either CSR or CSC format
     template<typename T, StorageOrder Order>
     void Matrix<T, Order>::uncompress() {
+        // Check if the matrix is already uncompressed
+        if (!is_compressed()) {
+            return;
+        }
         // Clear the existing data map
         data_map.clear();
 
