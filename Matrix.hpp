@@ -1,6 +1,6 @@
 #ifndef MATRIX_HPP
 #define MATRIX_HPP
-
+// clang-format off
 #include <map>
 #include <array>
 #include <vector>
@@ -17,6 +17,8 @@ namespace algebra {
     struct ColumnMajorCompare {
         bool operator()(const std::array<T, N>& lhs, const std::array<T, N>& rhs) const {
             // Compare column indices first
+            // a little trick using tie
+            // return std::tie(lhs[1], lhs[0]) < std::tie(rhs[1], rhs[0]);
             if (lhs[1] < rhs[1]) return true;
             if (lhs[1] > rhs[1]) return false;
             // If column indices are equal, compare row indices
@@ -36,7 +38,7 @@ namespace algebra {
     private:
         std::size_t rows; // Stores the number of rows in the matrix
         std::size_t cols; // Stores the number of columns in the matrix
-
+//@note Try to use doxygen type comments.
         // Define default comparison type for row-major ordering
         using DefaultCompareType = std::less<std::array<std::size_t, 2>>;
         // Define custom comparison type for column-major ordering

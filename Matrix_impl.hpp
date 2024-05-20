@@ -1,6 +1,6 @@
 #ifndef MATRIX_IMPL_HPP
 #define MATRIX_IMPL_HPP
-
+// clang-format off
 #include <iostream>
 #include <iomanip>
 
@@ -19,6 +19,10 @@ namespace algebra {
         val.clear();
         inner_idx.clear();
         outer_idx.clear();
+        //@note This is not what the user expects when resizing a matrix. You should keep the original data if the resized matrix is larger. 
+        // Of course this is easy to do only if you are in an uncompressed state.
+        //Here you are not resizing, you are setting the matrix to zero.
+        // Moreover, remember that for vectors, clear() does not free memory. You need to use shrink_to_fit() to free memory after clear().
     }
 
     /// Compress the matrix
@@ -32,6 +36,7 @@ namespace algebra {
         val.clear();
         inner_idx.clear();
         outer_idx.clear();
+        //@note You need shrink_to_fit() here to free memory.
 
         std::size_t nnz = data_map.size();
 
@@ -48,7 +53,10 @@ namespace algebra {
                 const auto& indices = entry.first;
                 const auto& value = entry.second;
 
-                // Check if we moved to the next row
+                // Check if we moved to the next row 
+                //@todo you do not need to be so complicated.
+                // std::map has methods lower_bound and upper_bound that can be used to find the range of elements in a row (column).
+                // and simplify a lot the code.
                 if (indices[0] != current_outer_index) {
                     current_outer_index = indices[0];
                     inner_idx[current_outer_index] = n_nnz;
@@ -103,6 +111,7 @@ namespace algebra {
                     // Add the value to the data map
                     std::array<std::size_t, 2> index = {i, outer_idx[j]};
                     data_map[index] = val[j];
+                    //@note why not simply data_map[{i, outer_idx[j]}] = val[j];
                 }
             }
         }

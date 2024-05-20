@@ -1,4 +1,4 @@
-PACS_ROOT = ../../pacs-examples/Examples
+PACS_ROOT ?= ../../pacs-examples/Examples
 
 CXX      ?= g++
 CXXFLAGS ?= -std=c++17
